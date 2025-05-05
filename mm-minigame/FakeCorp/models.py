@@ -23,6 +23,7 @@ class Conversation(models.Model):
     etapa = models.ForeignKey(Etapa, on_delete=models.CASCADE)
     orden_salida = models.IntegerField()
     contenido = models.TextField()
+    antes_actividad = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Conversación {self.id} (Etapa {self.etapa.id})"

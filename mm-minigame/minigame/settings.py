@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "FakeCorp",
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +54,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "minigame.urls"
 
@@ -78,11 +86,11 @@ WSGI_APPLICATION = "minigame.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Minigame',
-        'USER': 'postgres',
-        'PASSWORD': '15012002',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': os.environ.get('MG_DB_NAME'),
+        'USER': os.environ.get('MG_DB_USER'),
+        'PASSWORD': os.environ.get('MG_DB_PASSWORD'),
+        'HOST': os.environ.get('MG_DB_HOST'),
+        'PORT': os.environ.get('MG_DB_PORT')
     }
 }
 

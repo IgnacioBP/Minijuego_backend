@@ -1,0 +1,173 @@
+[
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 1,
+      "fields": {
+        "habilidad": "Parodia"
+      }
+    },
+
+    {
+        "model": "FakeCorp.userprogress",
+        "pk": 1,
+        "fields": {
+          "usuario": 1,
+          "etapa": 1,
+          "numero_conversacion_alcanzada":0,
+          "numero_actividad_alcanzada":0
+        }
+    },
+
+
+    {
+      "model": "FakeCorp.conversation",
+      "pk": 1,
+      "fields": {
+        "etapa": 1,
+        "orden_salida": 1,
+        "contenido": "Bienvenido a la redacción más seria de noticias no tan serias!",
+        "antes_actividad": false
+      }
+    },
+
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 2,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 2,
+          "contenido": "Primero, prepárate para retorcer titulares, inventar situaciones absurdamente creíbles, y caminar en la fina línea entre la sátira y la realidad, que a veces ni nosotros distinguimos.",
+          "antes_actividad": false
+        }
+    },
+
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 3,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 3,
+          "contenido": "Aquí no tememos decir las verdades incómodas... con un toque de humor negro y un poco de surrealismo, claro está.",
+          "antes_actividad": false
+        }
+    },
+    
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 4,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 4,
+          "contenido": "Te debes preguntar quien es esta carismática persona quien te escribe...",
+          "antes_actividad": false
+        }
+    },
+
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 5,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 5,
+          "contenido": "Soy Aquiles Burlo, aquel que te enseñara sobre el gracioso mundo de la parodia y la sátira.",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 6,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 6,
+          "contenido": "Retorcemos la realidad, exageramos mas de lo que deberíamos y por supuesto lo hacemos tentador para el lector ",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 7,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 7,
+          "contenido": "Alguna vez has leído algo raro y te has dicho a ti mismo: “ esto no puede ser verdad, pero ... y  si lo es? ”",
+          "antes_actividad": false
+        }
+    },
+
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 8,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 8,
+          "contenido": "En esos casos puede que estés frente a una parodia o sátira.",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 9,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 9,
+          "contenido": "Estas suelen crear realidades y exagerar acciones o hechos con el fin de atraer al lector y , si esta bien echa, que el lector se la crea y difunda información falsa",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 10,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 10,
+          "contenido": "Pero claro aun estas muy verde para escribir una sátira como un profesional (o sea yo)",
+          "antes_actividad": false
+        }
+    },
+    
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 11,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 11,
+          "contenido": "Primero empecemos con algo sencillo ",
+          "antes_actividad": true
+        }
+    },
+
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 12,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 12,
+          "contenido": "ESTO SOLO SE VERIA DESPUES DE LA ACTIVIDAD,SIN IMPORTAR EL RESULTADO",
+          "antes_actividad": false
+        }
+    },
+
+
+
+    {
+      "model": "FakeCorp.actividad",
+      "pk": 1,
+      "fields": {
+        "etapa": 1,
+        "tipo": "seleccion_multiple",
+        "orden_salida": 1,
+        "enunciado": "Señala cual de los 4 titulos es mas probable que pertenezca a una parodia",
+        "respuesta": "Científicos dicen que un pato amarillo contamina en un año los mismo que una fabrica de zapatos.",
+        "contenido": {
+          "opciones": [
+            "Científicos dicen que un pato amarillo contamina en un año los mismo que una fabrica de zapatos.",
+            "Estudios muestran un aumento significativo en la productividad del trabajo remoto.",
+            "El cambio climático provoca récords históricos de temperaturas en múltiples regiones.",
+            "Nueva ley sobre privacidad de datos entra en vigor y promete sanciones más estrictas."
+          ]
+        },
+        "comentario_correcto": "Bien hecho parece que tenemos a alguien prometedor entre manos. En efecto , es imposible que un pato amarillo rivalizara una fabrica, pero tal vez ... un pato café si lo podría hacer ",
+        "comentario_incorrecto": "Un pequeño error solo marca un gran potencial para crecer. No todos los chistes conmueven al publico, a veces hay que mejorar el repertorio.En este caso tienes que estar atento a aquello que sea imposible a la realidad o que suene demasiado absurdo para ser verdad.  En este caso , era imposible que solo un pato hiciera todo eso o no?"
+      }
+    }
+  ]
