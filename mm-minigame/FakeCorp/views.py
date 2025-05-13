@@ -1,14 +1,15 @@
-#from django.shortcuts import render
-
-
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Conversation, Actividad
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+
+from .models import Conversation, Actividad, UserProgress
 from .serializers import ConversationSerializer, ActividadSerializer
 
 
 
+
+#Obtener conversaciones y actividades del chat
 @api_view(['GET'])
 def elementos_por_etapa(request, etapa_id):
     conversaciones = Conversation.objects.filter(etapa_id=etapa_id)
@@ -29,7 +30,7 @@ def elementos_por_etapa(request, etapa_id):
 
     return Response(resultado)
 
-
+#Obtener una sola  actividad para renerizar
 @api_view(['GET'])
 def single_activity(request, etapa_id, activity_id):
     try:
@@ -38,3 +39,32 @@ def single_activity(request, etapa_id, activity_id):
         return Response(serializer.data)
     except Actividad.DoesNotExist:
         return Response({"error": "Actividad no encontrada"}, status=status.HTTP_404_NOT_FOUND)
+    
+
+#Actualizar informacion de progreso (NO PROBADO AUN)
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def actualizar_progreso(request):
+    user = request.user
+    etapa_id = request.data.get('etapa_id')
+    ultimo_chat = request.data['numero_conversacion_alcanzada']
+    ultima_actividad = request.data['numero_actividad_alcanzada']
+
+    print(request.data)
+    print("== DATOS RECIBIDOS EN EL BACKEND ==")
+    print("Usuario:", user)
+    print("Etapa ID:", etapa_id)
+    print("Último chat mostrado:", ultimo_chat)
+    print("Última actividad completada:", ultima_actividad)
+
+    try:
+        progreso = UserProgress.objects.get(usuario=user, etapa_id=etapa_id)
+        progreso.numero_conversacion_alcanzada = ultimo_chat
+        progreso.numero_actividad_alcanzada = ultima_actividad
+        progreso.save()
+        
+        return Response({'mensaje': 'Progreso actualizado correctamente'})
+    
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
