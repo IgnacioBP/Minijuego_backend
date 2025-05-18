@@ -12,8 +12,8 @@ from .serializers import ConversationSerializer, ActividadSerializer
 #Obtener conversaciones y actividades del chat
 @api_view(['GET'])
 def elementos_por_etapa(request, etapa_id):
-    conversaciones = Conversation.objects.filter(etapa_id=etapa_id)
-    activities = Actividad.objects.filter(etapa_id=etapa_id)
+    conversaciones = Conversation.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
+    activities = Actividad.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
 
     conv_serializer = ConversationSerializer(conversaciones, many=True).data
     acti_serializer = ActividadSerializer(activities, many=True).data
@@ -41,7 +41,7 @@ def single_activity(request, etapa_id, activity_id):
         return Response({"error": "Actividad no encontrada"}, status=status.HTTP_404_NOT_FOUND)
     
 
-#Actualizar informacion de progreso (NO PROBADO AUN)
+#Actualizar informacion de progreso
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def actualizar_progreso(request):
@@ -68,3 +68,20 @@ def actualizar_progreso(request):
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+
+#Obtener progreso de jugador
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def obtener_progreso(request):
+    user = request.user
+    progresos = UserProgress.objects.filter(usuario=user)
+    data = {}
+
+    for progreso in progresos:
+        data[f"etapa_{progreso.etapa.id}"] = {
+            "ultimo_chat_mostrado": progreso.numero_conversacion_alcanzada,
+            "ultima_actividad_completada": progreso.numero_actividad_alcanzada
+        }
+
+    return Response(data)

@@ -157,7 +157,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 2,
-          "contenido": "Primero, prepárate para retorcer titulares, inventar situaciones absurdamente creíbles, y caminar en la fina línea entre la sátira y la realidad, que a veces ni nosotros distinguimos.",
+          "contenido": "Soy Aquiles, pero no te preocupes, aquí el único talón débil es el pensamiento crítico.",
           "antes_actividad": false
         }
     },
@@ -168,7 +168,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 3,
-          "contenido": "Aquí no tememos decir las verdades incómodas... con un toque de humor negro y un poco de surrealismo, claro está.",
+          "contenido": "Hoy te enseñaré el arte noble de la parodia. Porque, escúchame bien: no todo lo falso es malintencionado. A veces es solo... divertidamente ridículo.",
           "antes_actividad": false
         }
     },
@@ -179,7 +179,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 4,
-          "contenido": "Te debes preguntar quien es esta carismática persona quien te escribe...",
+          "contenido": "¿Has leído alguna vez titulares como “Descubren que las vacas controlan el clima desde 1972”?  ",
           "antes_actividad": false
         }
     },
@@ -190,7 +190,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 5,
-          "contenido": "Soy Aquiles Burlo, aquel que te enseñara sobre el gracioso mundo de la parodia y la sátira.",
+          "contenido": "Eso es *sátira*, mi pequeño aprendiz de la ironía.",
           "antes_actividad": false
         }
     },
@@ -201,7 +201,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 6,
-          "contenido": "Retorcemos la realidad, exageramos mas de lo que deberíamos y por supuesto lo hacemos tentador para el lector ",
+          "contenido": "La sátira exagera, ridiculiza, pero no busca engañar...  ",
           "antes_actividad": false
         }
     },
@@ -212,7 +212,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 7,
-          "contenido": "Alguna vez has leído algo raro y te has dicho a ti mismo: “ esto no puede ser verdad, pero ... y  si lo es? ”",
+          "contenido": "Aunque claro, si la compartes sin contexto, ¡Zas! Desinformación sin querer.",
           "antes_actividad": false
         }
     },
@@ -223,7 +223,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 8,
-          "contenido": "En esos casos puede que estés frente a una parodia o sátira.",
+          "contenido": "¿Preparado/a para tu primer desafío?",
           "antes_actividad": false
         }
     },
@@ -234,8 +234,8 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 9,
-          "contenido": "Estas suelen crear realidades y exagerar acciones o hechos con el fin de atraer al lector y , si esta bien echa, que el lector se la crea y difunda información falsa",
-          "antes_actividad": false
+          "contenido": "Listo o no, aqui vamoooos",
+          "antes_actividad": true
         }
     },
 
@@ -245,7 +245,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 10,
-          "contenido": "Pero claro aun estas muy verde para escribir una sátira como un profesional (o sea yo)",
+          "contenido": "¡Y ahí lo tienes! Parodia en estado puro.",
           "antes_actividad": false
         }
     },
@@ -256,8 +256,8 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 11,
-          "contenido": "Primero empecemos con algo sencillo ",
-          "antes_actividad": true
+          "contenido": "Un pato amarillo que contamina como una fábrica… si eso no es exageración, yo soy un noticiero serio.",
+          "antes_actividad": false
         }
     },
 
@@ -267,14 +267,150 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 12,
-          "contenido": "ESTO SOLO SE VERIA DESPUES DE LA ACTIVIDAD,SIN IMPORTAR EL RESULTADO",
+          "contenido": "Ahora ojo al dato:",
           "antes_actividad": false
         }
     },
 
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 13,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 13,
+          "contenido": "La sátira no siempre es tan ridícula. A veces se disfraza bien, con titulares que suenan casi creíbles.",
+          "antes_actividad": false
+        }
+    },
 
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 14,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 14,
+          "contenido": "Cosas que puedes buscar en una noticia para decir que es satira:",
+          "antes_actividad": false
+        }
+    },
 
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 15,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 15,
+          "contenido": "Lenguaje exagerado o situaciones absurdas.",
+          "antes_actividad": false
+        }
+    },
 
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 16,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 16,
+          "contenido": "Burlas a figuras públicas o eventos reales.",
+          "antes_actividad": false
+        }
+    },
+    
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 17,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 17,
+          "contenido": "Medios con nombres como El Desinforme, La Mentira Ilustrada, o Noticias Que Tal Vez..",
+          "antes_actividad": false
+        }
+    },
+    
+
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 18,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 18,
+          "contenido": "Vamos a poner a prueba eso que acabas de aprender.",
+          "antes_actividad": false
+        }
+    },
+    
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 19,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 19,
+          "contenido": "A ver si puedes detectar la sátira cuando usa corbata y lentes de periodista.",
+          "antes_actividad": true
+        }
+    },
+    
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 20,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 20,
+          "contenido": "¡Muy bien, muy bien! Ya vas entendiendo cómo se camufla la sátira entre titulares reales.",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 21,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 21,
+          "contenido": "No siempre se presenta como una broma evidente… a veces se disfraza de noticia seria, ¡y ahí está la trampa!",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 22,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 22,
+          "contenido": "Lo importante no es acertar siempre, sino aprender a dudar con estilo.",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 23,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 23,
+          "contenido": "Y tú ya diste el primer gran paso: identificar la intención detrás del mensaje.",
+          "antes_actividad": false
+        }
+    },
+    {
+        "model": "FakeCorp.conversation",
+        "pk": 24,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 24,
+          "contenido": "Recuerda: la sátira no busca engañar, pero sí puede confundirte si la compartes sin contexto.",
+          "antes_actividad": false
+        }
+    },
+
+        {
+        "model": "FakeCorp.conversation",
+        "pk": 25,
+        "fields": {
+          "etapa": 1,
+          "orden_salida": 25,
+          "contenido": "Con eso, mi aprendiz de la ironía, ya tienes las herramientas básicas para reconocer una buena parodia.Prepárate… lo que viene ahora es menos gracioso y mucho más engañoso.",
+          "antes_actividad": false
+        }
+    },
 
 
 
@@ -303,5 +439,29 @@
         "comentario_correcto": "Bien hecho parece que tenemos a alguien prometedor entre manos. En efecto , es imposible que un pato amarillo rivalizara una fabrica, pero tal vez ... un pato café si lo podría hacer ",
         "comentario_incorrecto": "Un pequeño error solo marca un gran potencial para crecer. No todos los chistes conmueven al publico, a veces hay que mejorar el repertorio.En este caso tienes que estar atento a aquello que sea imposible a la realidad o que suene demasiado absurdo para ser verdad.  En este caso , era imposible que solo un pato hiciera todo eso o no?"
       }
+    },
+
+    {
+      "model": "FakeCorp.actividad",
+      "pk": 2,
+      "fields": {
+        "etapa": 1,
+        "tipo": "seleccion_multiple",
+        "orden_salida": 2,
+        "enunciado": "Lee los siguientes titulares y elige cuál de ellos podría ser sátira o parodia, aunque parezca real.",
+        "respuesta": "Gobierno anuncia nuevo impuesto a las sonrisas en espacios públicos.",
+        "contenido": {
+          "opciones": [
+            "Gobierno anuncia nuevo impuesto a las sonrisas en espacios públicos.",
+            "ONU exige medidas urgentes contra la deforestación en la Amazonía.",
+            "Ministro de Salud presenta plan nacional de vacunación gratuita.",
+            "Economistas alertan sobre inflación en productos alimentarios."
+          ]
+        },
+        "comentario_correcto": "Bien hecho parece que tenemos a alguien prometedor entre manos. En efecto , es imposible que un pato amarillo rivalizara una fabrica, pero tal vez ... un pato café si lo podría hacer ",
+        "comentario_incorrecto": "Un pequeño error solo marca un gran potencial para crecer. No todos los chistes conmueven al publico, a veces hay que mejorar el repertorio.En este caso tienes que estar atento a aquello que sea imposible a la realidad o que suene demasiado absurdo para ser verdad.  En este caso , era imposible que solo un pato hiciera todo eso o no?"
+      }
     }
+
+
   ]
