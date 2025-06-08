@@ -1,144 +1,4 @@
 [
-    {
-      "model": "FakeCorp.etapa",
-      "pk": 1,
-      "fields": {
-        "habilidad": "Parodia"
-      }
-    },
-    {
-      "model": "FakeCorp.etapa",
-      "pk": 2,
-      "fields": {
-        "habilidad": "Conexión falsa"
-      }
-    },
-    {
-      "model": "FakeCorp.etapa",
-      "pk": 3,
-      "fields": {
-        "habilidad": "Contenido engañoso"
-      }
-    },
-    {
-      "model": "FakeCorp.etapa",
-      "pk": 4,
-      "fields": {
-        "habilidad": "Contexto falso"
-      }
-    },
-    {
-      "model": "FakeCorp.etapa",
-      "pk": 5,
-      "fields": {
-        "habilidad": "Contenido impostor"
-      }
-    },
-    {
-      "model": "FakeCorp.etapa",
-      "pk": 6,
-      "fields": {
-        "habilidad": "Contenido Manipulado"
-      }
-    },
-    {
-      "model": "FakeCorp.etapa",
-      "pk": 7,
-      "fields": {
-        "habilidad": "Contenido fabricado"
-      }
-    },
-
-
-
-
-
-
-
-
-
-    {
-        "model": "FakeCorp.userprogress",
-        "pk": 1,
-        "fields": {
-          "usuario": 1,
-          "etapa": 1,
-          "numero_conversacion_alcanzada":0,
-          "numero_actividad_alcanzada":0
-        }
-    },
-
-    {
-        "model": "FakeCorp.userprogress",
-        "pk": 2,
-        "fields": {
-          "usuario": 1,
-          "etapa": 2,
-          "numero_conversacion_alcanzada":0,
-          "numero_actividad_alcanzada":0
-        }
-    },
-
-        {
-        "model": "FakeCorp.userprogress",
-        "pk": 3,
-        "fields": {
-          "usuario": 1,
-          "etapa": 3,
-          "numero_conversacion_alcanzada":0,
-          "numero_actividad_alcanzada":0
-        }
-    },
-    {
-        "model": "FakeCorp.userprogress",
-        "pk": 4,
-        "fields": {
-          "usuario": 1,
-          "etapa": 4,
-          "numero_conversacion_alcanzada":0,
-          "numero_actividad_alcanzada":0
-        }
-    },
-
-    {
-        "model": "FakeCorp.userprogress",
-        "pk": 5,
-        "fields": {
-          "usuario": 1,
-          "etapa": 5,
-          "numero_conversacion_alcanzada":0,
-          "numero_actividad_alcanzada":0
-        }
-    },
-
-    {
-        "model": "FakeCorp.userprogress",
-        "pk": 6,
-        "fields": {
-          "usuario": 1,
-          "etapa": 6,
-          "numero_conversacion_alcanzada":0,
-          "numero_actividad_alcanzada":0
-        }
-    },
-
-    {
-        "model": "FakeCorp.userprogress",
-        "pk": 7,
-        "fields": {
-          "usuario": 1,
-          "etapa": 7,
-          "numero_conversacion_alcanzada":0,
-          "numero_actividad_alcanzada":0
-        }
-    },
-
-
-
-
-
-
-
 
     {
       "model": "FakeCorp.conversation",
@@ -417,8 +277,6 @@
 
 
 
-
-
     {
       "model": "FakeCorp.actividad",
       "pk": 1,
@@ -464,4 +322,5 @@
     }
 
 
-  ]
+
+]

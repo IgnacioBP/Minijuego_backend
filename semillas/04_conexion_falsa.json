@@ -1,0 +1,237 @@
+[
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 26,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 1,
+      "contenido": "¡Hola, aprendiz de caos digital! Soy Clara Clickbait, la reina del titular escandaloso y la conexión floja.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 27,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 2,
+      "contenido": "Hoy te enseñaré uno de mis trucos favoritos: hacer que el título prometa algo que el artículo nunca dice 😏",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 28,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 3,
+      "contenido": "¿Has visto noticias que dicen algo como “¡No creerás lo que hizo este gato!” y luego... es solo un gato que maulló?",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 29,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 4,
+      "contenido": "Eso es una conexión falsa: el título, imagen o subtítulo no coinciden con lo que realmente dice la nota.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 30,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 5,
+      "contenido": "¿Quieres detectar una? Aquí van unos tips de experta 💄",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 31,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 6,
+      "contenido": "🔍 Cuidado con los títulos exagerados: si suena demasiado bueno o malo para ser cierto… probablemente no lo sea.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 32,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 7,
+      "contenido": "🪤 Promesas que no se cumplen: “Descubre el secreto” o “Este truco cambió mi vida”… y nunca te dicen cuál es.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 33,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 8,
+      "contenido": "📸 Imágenes que no encajan: a veces usan una foto vieja o impactante solo para llamar la atención, aunque no tenga relación.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 34,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 9,
+      "contenido": "🧩 Faltan detalles importantes: el título omite lo más relevante y genera confusión.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 35,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 10,
+      "contenido": "Te daré una pista más: si lees la nota y piensas “¿qué tiene que ver esto con el título?”, probablemente es una conexión falsa.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 36,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 11,
+      "contenido": "A ver si puedes detectar una… ¡Prepárate!",
+      "antes_actividad": true
+    }
+  },
+
+
+
+
+
+
+
+
+  
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 37,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 12,
+      "contenido": "¡Bien, bien! Estás afinando ese radar.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 38,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 13,
+      "contenido": "Recuerda: el titular no siempre te dice la verdad. Te seduce… pero te miente.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 39,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 14,
+      "contenido": "Ahora, te propongo algo más difícil. Vamos a completar una frase con el ejemplo perfecto de conexión falsa.",
+      "antes_actividad": true
+    }
+  },
+  
+  
+  
+
+
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 40,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 15,
+      "contenido": "¡Excelente trabajo! Ya puedes detectar un titular tramposo a kilómetros.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 41,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 16,
+      "contenido": "Repite conmigo: “No me dejo engañar por títulos con trampa”.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 42,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 17,
+      "contenido": "Nos veremos pronto con otro tipo de desinformación. Pero recuerda… ¡los clics fáciles no siempre traen verdades!",
+      "antes_actividad": false
+    }
+  },
+
+
+
+  {
+      "model": "FakeCorp.actividad",
+      "pk": 3,
+      "fields": {
+        "etapa": 2,
+        "tipo": "seleccion_multiple",
+        "orden_salida": 1,
+        "enunciado": "Un medio publicó el siguiente artículo:\n“Un estudio de una universidad europea sugiere que algunas infusiones de té de hierbas podrían tener efectos calmantes leves en ciertas personas, pero se necesitan más investigaciones.”\n\n¿Cuál de estos titulares representa una conexión falsa con respecto al contenido real?",
+        "respuesta": "El té de hierbas es la nueva cura definitiva para la ansiedad, según la ciencia.",
+        "contenido": {
+          "opciones": [
+            "El té de hierbas es la nueva cura definitiva para la ansiedad, según la ciencia.",
+            "Investigadores estudian los posibles efectos del té de hierbas en la relajación.",
+            "Universidad europea analiza beneficios del té natural en el sistema nervioso.",
+            "Estudio preliminar señala propiedades relajantes del té de hierbas."
+          ]
+        },
+        "comentario_correcto":"¡Bien visto! Ese titular exagera los resultados reales del estudio para captar clics. Una conexión falsa suele inflar o tergiversar el contenido real para que parezca algo mucho más impactante.",
+        "comentario_incorrecto":"¡Casi! Fijate en cómo ese titular hace una afirmación muy fuerte (‘cura definitiva’) que no aparece en el estudio real. La conexión falsa muchas veces usa titulares llamativos para distorsionar el contenido original."
+      }
+    },
+
+    {
+      "model": "FakeCorp.actividad",
+      "pk": 4,
+      "fields": {
+        "etapa": 2,
+        "tipo": "completar_frase",
+        "orden_salida": 2,
+        "enunciado": "Completa esta oración con las dos palabras que mejor mantienen el tono de conexión falsa:\n\n“Los científicos han descubierto un ___ secreto para lograr una ___ eterna.”",
+        "respuesta": ["secreto", "juventud"],
+        "contenido": {
+          "opciones": [
+            "método",
+            "juventud",
+            "desayuno",
+            "verdad",
+            "secreto",
+            "vitamina"
+          ]
+        },
+        "comentario_correcto": "¡Muy bien! Palabras como 'secreto' y 'juventud eterna' suelen aparecer en titulares sensacionalistas que prometen soluciones mágicas. Son pistas típicas de una conexión falsa: lo que el título dice no se refleja en la noticia real.",
+        "comentario_incorrecto": "No es tan fácil, ¿eh? Fijate cómo palabras como 'secreto' y 'juventud eterna' hacen que la frase suene exagerada y atractiva, aunque probablemente el artículo real no diga nada tan impactante. Así operan muchas conexiones falsas."
+      }
+    }
+
+
+
+]

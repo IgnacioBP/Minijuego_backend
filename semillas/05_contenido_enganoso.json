@@ -1,0 +1,183 @@
+[
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 43,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 1,
+      "contenido": "¡Hola, recluta! Soy Verónica Sesgada, experta en tomar una pizca de verdad y convertirla en una tormenta viral.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 44,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 2,
+      "contenido": "Hoy aprenderás sobre el contenido engañoso: cuando se usa información verdadera, pero presentada de forma manipulada o fuera de contexto para hacerla parecer otra cosa. El objetivo suele ser influir en tu opinión, provocar emociones o reforzar una idea falsa.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 45,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 3,
+      "contenido": "Una técnica muy común es mostrar un dato real, pero sin explicar todo el contexto. Así se puede hacer que algo pequeño parezca enorme.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 46,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 3,
+      "contenido": "También se puede engañar usando imágenes sacadas de otro lugar, o citando a alguien sin decir cuándo o en qué contexto lo dijo.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 47,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 4,
+      "contenido": "¿Un consejo? Desconfía de titulares que parecen exagerados o buscan impactarte demasiado sin mostrar toda la información.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 48,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 5,
+      "contenido": "Vamos con una actividad para ver si puedes detectar un titular que manipula el contexto. Léelo con atención.",
+      "antes_actividad": true
+    }
+  },
+
+
+
+
+
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 49,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 6,
+      "contenido": "Ese titular usaba un dato verdadero pero sin explicar que era solo una parte del estudio. Esa es una táctica común para generar alarma sin mentir directamente. ¡Ojo con eso!",
+      "antes_actividad": false
+    }
+  },
+
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 50,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 7,
+      "contenido": "Otra pista: si una frase se basa en un dato aislado o saca una cita fuera de contexto, probablemente es engañosa.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 51,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 8,
+      "contenido": "Vamos con otra actividad. Esta vez deberás completar una oración para mantener el sentido engañoso. Cuidado con las trampas.",
+      "antes_actividad": true
+    }
+  },
+
+
+
+
+
+
+
+
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 51,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 9,
+      "contenido": "En este caso, lo importante era notar cómo una pequeña frase podía hacer que un dato real suene alarmante o se malinterprete. ¡Fíjate siempre en el contexto completo!",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 52,
+    "fields": {
+      "etapa": 3,
+      "orden_salida": 10,
+      "contenido": "Muy bien. Ahora sabes que el contenido engañoso no siempre es mentira... pero sí puede hacerte creer cosas equivocadas. Cuando leas algo alarmante, pregúntate: ¿Qué parte de la historia no me están contando?",
+      "antes_actividad": false
+    }
+  },
+
+
+
+
+ {
+      "model": "FakeCorp.actividad",
+      "pk": 5,
+      "fields": {
+        "etapa": 3,
+        "tipo": "seleccion_multiple",
+        "orden_salida": 1,
+        "enunciado": "¿Cuál de los siguientes titulares puede representar contenido engañoso por exagerar un hecho sin dar el contexto completo?",
+        "respuesta": "Aumentan los ataques de animales en la ciudad”, basándose en solo dos incidentes menores en seis meses.",
+        "contenido": {
+          "opciones": [
+            "Festival de lectura reúne a 500 estudiantes, con fotos y testimonios de profesores.",
+            "Aumentan los ataques de animales en la ciudad”, basándose en solo dos incidentes menores en seis meses.",
+            "Nueva biblioteca ofrece talleres gratuitos de escritura para niños",
+            "Clases de tecnología ahora serán optativas, según el nuevo reglamento del segundo semestre"
+          ]
+        },
+        "comentario_correcto": "¡Esa mirada crítica te va a meter en problemas con los fabricantes de titulares impactantes! Solo dos casos y ya parece una invasión animal… eso es saber detectar un buen truco.",
+        "comentario_incorrecto": "Ah, caíste. Esa noticia puede sonar seria, pero el truco está en el contexto. A veces, un par de incidentes aislados se venden como una tendencia. ¡Así se mueve el miedo, y el miedo vende!"
+      }
+  },
+
+ {
+      "model": "FakeCorp.actividad",
+      "pk": 4,
+      "fields": {
+        "etapa": 2,
+        "tipo": "completar_frase",
+        "orden_salida": 2,
+        "enunciado": "Completa esta frase para que funcione como contenido engañoso: “Solo el 3% de las personas que comen pan integral desarrollan cáncer, lo que demuestra que…”",
+        "respuesta": "…existe una conexión entre el pan integral y el desarrollo del cáncer.",
+        "contenido": {
+          "opciones": [
+            "…el pan integral es un alimento completamente seguro para todos.",
+            "…existe una conexión entre el pan integral y el desarrollo del cáncer.",
+            "…no hay suficiente información para hacer afirmaciones concluyentes.",
+            "…comer pan integral no aumenta el riesgo de cáncer en general.",
+            "…es mejor evitar el pan integral hasta que se realicen más estudios.",
+            "…el pan integral podría ser tan peligroso como el tabaco."
+          ]
+        },
+        "comentario_correcto": "¡Eso es! Tomamos un dato real y sembramos la duda. No hace falta mentir... solo sugerir una relación donde no la hay. El lector hace el resto por sí solo.",
+        "comentario_incorrecto": "Demasiado prudente. Para engañar con estilo, necesitas disfrazar el dato con una conclusión alarmante. No mientes, solo... siembras una sospecha. ¿Ves la diferencia?"
+      }
+  }
+
+
+
+
+
+
+
+
+]

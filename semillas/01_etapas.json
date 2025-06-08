@@ -1,0 +1,53 @@
+[
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 1,
+      "fields": {
+        "habilidad": "Parodia"
+      }
+    },
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 2,
+      "fields": {
+        "habilidad": "Conexión falsa"
+      }
+    },
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 3,
+      "fields": {
+        "habilidad": "Contenido engañoso"
+      }
+    },
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 4,
+      "fields": {
+        "habilidad": "Contexto falso"
+      }
+    },
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 5,
+      "fields": {
+        "habilidad": "Contenido impostor"
+      }
+    },
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 6,
+      "fields": {
+        "habilidad": "Contenido Manipulado"
+      }
+    },
+    {
+      "model": "FakeCorp.etapa",
+      "pk": 7,
+      "fields": {
+        "habilidad": "Contenido fabricado"
+      }
+    }
+]
+
+

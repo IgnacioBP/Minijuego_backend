@@ -3,6 +3,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 
+import openai
+
 from .models import Conversation, Actividad, UserProgress
 from .serializers import ConversationSerializer, ActividadSerializer
 
@@ -85,3 +87,40 @@ def obtener_progreso(request):
         }
 
     return Response(data)
+
+
+#▬▬▬▬▬▬▬▬▬ Generacion con OpenIA ▬▬▬▬▬▬▬▬▬
+
+# openai.api_key = "TU_API_KEY"
+
+# @api_view(['POST'])
+# def generar_actividad_desafio(request):
+
+#     #Extraer datos de categoria y nivel de complejidad (facil, medio o dificil) POR AHORA ES ESTATICO
+#     categoria = request.data.get("categoria", "Parodia")  
+#     nivel = request.data.get("nivel", "medio")  
+
+
+#     prompt = f"""
+#     Crea una pregunta tipo opción múltiple sobre desinformación de tipo "{categoria}", según el marco de Claire Wardle. La pregunta debe tener 4 opciones, con una correcta. Incluye también una breve explicación del porqué es correcta.
+
+#     Formato JSON con campos: pregunta, opciones (lista), respuesta_correcta (texto exacto), explicacion.
+
+#     Nivel de dificultad: {nivel}.
+#     """
+
+#     respuesta = openai.ChatCompletion.create(
+#         model="gpt-4.1-nano",
+#         messages=[{"role": "user", "content": prompt}],
+#     )
+
+#     contenido = respuesta.choices[0].message.content
+
+#     # Puedes hacer validación o limpieza del JSON si lo necesitas
+#     import json
+#     try:
+#         actividad_json = json.loads(contenido)
+#     except json.JSONDecodeError:
+#         return Response({"error": "Error al interpretar la actividad generada."}, status=500)
+
+#     return Response(actividad_json)
