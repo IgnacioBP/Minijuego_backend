@@ -51,6 +51,7 @@ def actualizar_progreso(request):
     etapa_id = request.data.get('etapa_id')
     ultimo_chat = request.data['numero_conversacion_alcanzada']
     ultima_actividad = request.data['numero_actividad_alcanzada']
+    compeltada = request.data['final_alcanzado']
 
     print(request.data)
     print("== DATOS RECIBIDOS EN EL BACKEND ==")
@@ -63,6 +64,7 @@ def actualizar_progreso(request):
         progreso = UserProgress.objects.get(usuario=user, etapa_id=etapa_id)
         progreso.numero_conversacion_alcanzada = ultimo_chat
         progreso.numero_actividad_alcanzada = ultima_actividad
+        progreso.completado = compeltada
         progreso.save()
         
         return Response({'mensaje': 'Progreso actualizado correctamente'})
@@ -83,7 +85,8 @@ def obtener_progreso(request):
     for progreso in progresos:
         data[f"etapa_{progreso.etapa.id}"] = {
             "ultimo_chat_mostrado": progreso.numero_conversacion_alcanzada,
-            "ultima_actividad_completada": progreso.numero_actividad_alcanzada
+            "ultima_actividad_completada": progreso.numero_actividad_alcanzada,
+            "final_alcanzado": progreso.completado
         }
 
     return Response(data)

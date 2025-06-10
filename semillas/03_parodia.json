@@ -268,7 +268,8 @@
           "etapa": 1,
           "orden_salida": 25,
           "contenido": "Con eso, mi aprendiz de la ironía, ya tienes las herramientas básicas para reconocer una buena parodia.Prepárate… lo que viene ahora es menos gracioso y mucho más engañoso.",
-          "antes_actividad": false
+          "antes_actividad": false,
+          "final": true
         }
     },
 

@@ -1,4 +1,6 @@
 # Migraciones
+
+python manage.py makemigrations
 python manage.py migrate
 
 # Vaciar las tabla
@@ -29,14 +31,24 @@ Get-ChildItem -Path ../semillas -Filter *.json | Sort-Object Name | ForEach-Obje
 
 # Anotaciones
 
+## Cosas que hacer (RECORDAR)
+- Terminar de hacer los seeds de 06 contexto falso,07 contenido impostor,08 contenido manipulado,09 contenido fabricado
+
+
+
+
+
+
+
+
 ## Personalidades
-1.-Irónico, burlón y exagerado. / Ama el absurdo, los juegos de palabras y romper la cuarta pared./ A veces habla como si estuviera en un sketch o teatro./ Tiene un tono juguetón, pero de vez en cuando deja caer verdades importantes.
-2.-Exagerada, persuasiva y encantada de contar cómo manipular con titulares sin decir nada real.
-3.-Carismática, convincente y elegante. Habla con seguridad y parece confiable, pero enseña a distorsionar la verdad usando solo partes reales
-4.-
-5.-
-6.-
-7.-
+1. Irónico, burlón y exagerado. / Ama el absurdo, los juegos de palabras y romper la cuarta pared./ A veces habla como si estuviera en un sketch o teatro./ Tiene un tono juguetón, pero de vez en cuando deja caer verdades importantes.
+2. Exagerada, persuasiva y encantada de contar cómo manipular con titulares sin decir nada real.
+3. Carismática, convincente y elegante. Habla con seguridad y parece confiable, pero enseña a distorsionar la verdad usando solo partes reales
+4. 
+5. 
+6. 
+7. 
 
 
 

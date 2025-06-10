@@ -180,7 +180,8 @@
       "etapa": 2,
       "orden_salida": 17,
       "contenido": "Nos veremos pronto con otro tipo de desinformación. Pero recuerda… ¡los clics fáciles no siempre traen verdades!",
-      "antes_actividad": false
+      "antes_actividad": false,
+      "final": true
     }
   },
 

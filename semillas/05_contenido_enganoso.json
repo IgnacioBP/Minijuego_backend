@@ -61,9 +61,6 @@
   },
 
 
-
-
-
   {
     "model": "FakeCorp.conversation",
     "pk": 49,
@@ -105,7 +102,7 @@
 
   {
     "model": "FakeCorp.conversation",
-    "pk": 51,
+    "pk": 52,
     "fields": {
       "etapa": 3,
       "orden_salida": 9,
@@ -115,14 +112,17 @@
   },
   {
     "model": "FakeCorp.conversation",
-    "pk": 52,
+    "pk": 53,
     "fields": {
       "etapa": 3,
       "orden_salida": 10,
       "contenido": "Muy bien. Ahora sabes que el contenido engañoso no siempre es mentira... pero sí puede hacerte creer cosas equivocadas. Cuando leas algo alarmante, pregúntate: ¿Qué parte de la historia no me están contando?",
-      "antes_actividad": false
+      "antes_actividad": false,
+      "final": true
     }
   },
+
+
 
 
 
@@ -151,9 +151,9 @@
 
  {
       "model": "FakeCorp.actividad",
-      "pk": 4,
+      "pk": 6,
       "fields": {
-        "etapa": 2,
+        "etapa": 3,
         "tipo": "completar_frase",
         "orden_salida": 2,
         "enunciado": "Completa esta frase para que funcione como contenido engañoso: “Solo el 3% de las personas que comen pan integral desarrollan cáncer, lo que demuestra que…”",

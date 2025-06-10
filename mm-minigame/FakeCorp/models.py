@@ -14,6 +14,7 @@ class UserProgress(models.Model):
     etapa = models.ForeignKey(Etapa, on_delete=models.CASCADE)
     numero_conversacion_alcanzada = models.IntegerField(default = 0)
     numero_actividad_alcanzada = models.IntegerField(default = 0)
+    completado = models.BooleanField(default= False)
 
     def __str__(self):
         return f"{self.usuario.username} en {self.etapa}"
@@ -24,6 +25,7 @@ class Conversation(models.Model):
     orden_salida = models.IntegerField()
     contenido = models.TextField()
     antes_actividad = models.BooleanField(default=False)
+    final = models.BooleanField(default=False) 
 
     def __str__(self):
         return f"Conversación {self.id} (Etapa {self.etapa.id})"
