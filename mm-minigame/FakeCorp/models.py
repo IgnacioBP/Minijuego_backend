@@ -10,11 +10,29 @@ class Etapa(models.Model):
 
 
 class UserProgress(models.Model):
+    
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    #Subtemaa asociado (satira,contenido engañoso, etc)
     etapa = models.ForeignKey(Etapa, on_delete=models.CASCADE)
+
+    #Atributos relacionados a los chats
     numero_conversacion_alcanzada = models.IntegerField(default = 0)
     numero_actividad_alcanzada = models.IntegerField(default = 0)
     completado = models.BooleanField(default= False)
+    
+    #Atributo relacionado al desafio
+    DIFICULTAD_CHOICES = [
+        ("facil", "Fácil"),
+        ("media", "Media"),
+        ("dificil", "Difícil"),
+    ]
+
+    dificulad_maxima_alcanzada = models.CharField(
+        max_length=10,
+        choices=DIFICULTAD_CHOICES,
+        default="media"
+    )
 
     def __str__(self):
         return f"{self.usuario.username} en {self.etapa}"
