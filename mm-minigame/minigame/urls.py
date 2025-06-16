@@ -17,13 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView   #BORRAR AL COMBINAR COM MEDIAMASTERS
+
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView   
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/', include('FakeCorp.urls')),
 
-    
-    path('api/fake-login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  #BORRAR AL COMBINAR COM MEDIAMASTERS
-    path('api/refresh-token/', TokenRefreshView.as_view(), name='token_refresh'),  #BORRAR AL COMBINAR COM MEDIAMASTERS
+    path('api/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'), 
+    path('api/refresh-token/', TokenRefreshView.as_view(), name='token_refresh'),  
 ]

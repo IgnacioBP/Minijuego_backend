@@ -3,10 +3,38 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 
-from .models import Conversation, Actividad, UserProgress
+from django.contrib.auth.models import User
+from .models import Conversation, Actividad, UserProgress, Etapa
 from .serializers import ConversationSerializer, ActividadSerializer
 
 from .utils.request_openai import  *
+
+#Crear usuario
+@api_view(['POST'])
+def register_user(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+
+    if not username or not password:
+        return Response({"error": "Se requiere nombre de usuario y contraseña."}, status=400)
+
+    if User.objects.filter(username=username).exists():
+        return Response({"error": "El usuario ya existe."}, status=400)
+
+    user = User.objects.create_user(username=username, password=password)
+
+
+    etapas = Etapa.objects.all()
+    for etapa in etapas:
+        UserProgress.objects.create(
+            usuario=user,
+            etapa=etapa,
+            numero_conversacion_alcanzada=0,
+            numero_actividad_alcanzada=0
+        )
+        
+
+    return Response({"message": "Usuario creado exitosamente"}, status=status.HTTP_201_CREATED)
 
 
 
