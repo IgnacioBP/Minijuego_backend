@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import dj_database_url
 from datetime import timedelta
 
 load_dotenv()
@@ -28,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('MG_DB_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -85,15 +87,19 @@ WSGI_APPLICATION = "minigame.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('MG_DB_NAME'),
-        'USER': os.environ.get('MG_DB_USER'),
-        'PASSWORD': os.environ.get('MG_DB_PASSWORD'),
-        'HOST': os.environ.get('MG_DB_HOST'),
-        'PORT': os.environ.get('MG_DB_PORT')
-    }
+    'default': dj_database_url.config(default=os.getenv("SUPABASE_URL"))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('MG_DB_NAME'),
+#         'USER': os.environ.get('MG_DB_USER'),
+#         'PASSWORD': os.environ.get('MG_DB_PASSWORD'),
+#         'HOST': os.environ.get('MG_DB_HOST'),
+#         'PORT': os.environ.get('MG_DB_PORT')
+#     }
+# }
 
 
 # Password validation
