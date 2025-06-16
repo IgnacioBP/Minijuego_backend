@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('MG_DB_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mm-minigame1-f0cff7eb7d42.herokuapp.com','localhost', '127.0.0.1']
 
 
 # Application definition
