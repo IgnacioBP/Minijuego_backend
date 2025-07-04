@@ -216,7 +216,7 @@
         "etapa": 2,
         "tipo": "completar_frase",
         "orden_salida": 2,
-        "enunciado": "Completa esta oración con las dos palabras que mejor mantienen el tono de conexión falsa:\n\n“Los científicos han descubierto un ___ secreto para lograr una ___ eterna.”",
+        "enunciado": "Completa esta oración con las dos palabras que mejor mantienen el tono de conexión falsa:\n\n“Los científicos han descubierto un ___ para lograr una ___ eterna.”",
         "respuesta": ["secreto", "juventud"],
         "contenido": {
           "opciones": [

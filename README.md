@@ -20,7 +20,7 @@ from django.contrib.auth.models import User
 User.objects.create_user(username='usuario_prueba', password='1234')
 
 # Cargar seed's (windows shell)
-Get-ChildItem -Path ../semillas -Filter *.json | Sort-Object Name | ForEach-Object { python manage.py loaddata $_.FullName }
+Get-ChildItem -Path ./semillas -Filter *.json | Sort-Object Name | ForEach-Object { python manage.py loaddata $_.FullName }
 
 
 

@@ -1,9 +1,8 @@
 from openai import OpenAI
 import json
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 import os
 
-#load_dotenv(find_dotenv())
 load_dotenv()
 
 key=os.environ.get("OPENAI_API_KEY")
@@ -99,7 +98,7 @@ instruccion_sistema = (
     "\nTipos de actividades permitidos:\n- opcion multiple\n- completar la oracion"
 )
 
-def GetActividad(categoria,nivel,tipo):
+def get_actividad(categoria,nivel,tipo):
 
     categoria = niveles_conversion[int(categoria)]
 
@@ -133,7 +132,7 @@ def GetActividad(categoria,nivel,tipo):
     
     return actividad_json
 
-def CheckJson(actividad):
+def check_json(actividad):
     valid_json = True
     if actividad:
         if ("pregunta" not in actividad): 
