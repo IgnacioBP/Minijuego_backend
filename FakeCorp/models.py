@@ -83,11 +83,13 @@ class RespuestaDesafio(models.Model):
 
     pregunta = models.TextField()
     opciones = models.JSONField()
-    respuesta_correcta = models.JSONField()
+    respuesta_correcta = models.JSONField(null=True)
     respuesta_jugador = models.JSONField()
     es_correcta = models.BooleanField()
     
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    puntaje = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.usuario.username} - {self.dificultad} - {'✔' if self.es_correcta else '✘'}"

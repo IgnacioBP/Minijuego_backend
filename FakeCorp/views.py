@@ -9,10 +9,14 @@ from django.contrib.auth.models import User
 from .models import Conversation, Actividad, UserProgress, Etapa,UserAnswer,RegistroDesafio
 from .serializers import ConversationSerializer, ActividadSerializer,RespuestaDesafioSerializer, RegistroDesafioSerializer
 
-from .utils.request_openai import  *
+# PARA GENERACION DE PREGUNTAS
+#from .utils.request_openai import  *
+from .utils.OpenAI_evaluacion_texto import  *
+from .utils.OpenAI_evaluacion_respuesta import  *
+from .utils.OpenAI_pregunta_con_opciones import  *
+
+# Para manejo de dificultades
 from .utils.stablish_dificulty import  *
-
-
 
 #Crear usuario
 @api_view(['POST'])
@@ -48,7 +52,7 @@ def register_user(request):
 @permission_classes([IsAuthenticated])  
 def elementos_por_etapa(request, etapa_id):
     user = request.user
-
+    print(f"user: {user}")
     conversaciones = Conversation.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
     activities = Actividad.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
 
@@ -83,7 +87,7 @@ def elementos_por_etapa(request, etapa_id):
 
 
 
-#Obtener una sola  actividad para renerizar
+#Obtener una sola  actividad para renderizar
 @api_view(['GET'])
 def single_activity(request, etapa_id, activity_id):
     try:
@@ -151,6 +155,12 @@ def actualizar_progreso(request):
 
 
 
+
+
+
+
+
+
 #Obtener progreso de jugador
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -170,7 +180,13 @@ def obtener_progreso(request):
     return Response(data)
 
 
-#▬▬▬▬▬▬▬▬▬ Generacion con OpenIA ▬▬▬▬▬▬▬▬▬
+
+
+
+
+
+
+# ================================== Generacion con OpenIA ==================================
 
 @api_view(['POST'])
 def generar_actividad_desafio(request):
@@ -185,13 +201,57 @@ def generar_actividad_desafio(request):
     print("Tipo:", question_type)
 
     formated = False
-    while not formated:
-        data = get_actividad(question_category, question_level,question_type)
-        result = check_json(data)
-        if result == True:
-            formated = True
+    max_intentos = 3
+    intentos = 0
+    data = None
 
+    if question_type == "escribir_respuesta":
+         print("NUVOO FORMATO")
+         while not formated and intentos < max_intentos:
+            contenido = generate_news_for_title(question_category,question_level)
+            print(contenido)
+            intentos += 1
+            if isinstance(contenido, str):
+                data = {"contenido" : contenido} 
+                formated = True
+    else:
+         while not formated and intentos < max_intentos:
+            data = obtener_actividad(question_category, question_level,question_type)
+            result = check_json(data)
+            if result == True:
+                formated = True
+   
+    print("ENVIANDO: ")
+    print(data)
     return Response(data)
+
+@api_view(['POST'])
+def revisar_respuesta_redactada(request):
+    noticia = request.data.get('noticia')
+    user_answer = request.data.get('respuesta')
+    tema_noticia = request.data.get('tema')
+
+    formated = False
+    max_intentos = 3
+    intentos = 0
+    data = None
+
+    while not formated and intentos < max_intentos:  
+        data = evaluate_title_response(noticia, user_answer, tema_noticia)
+        print("DEVUELTA DE LA FUNCIOn")
+        intentos += 1
+        result, situation = check_title_evaluation(data)
+        if result:
+            print("PASO EVALUACION")
+            formated = True 
+        else:
+            print(situation)
+    
+    return Response(data)
+
+
+
+#===================================================================================================
 
 # GUARDAR PREGUNTAS Y RESPEUSTA DE JUGADOR
 @api_view(['POST'])

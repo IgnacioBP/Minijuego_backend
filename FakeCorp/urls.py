@@ -3,7 +3,7 @@ from .views import elementos_por_etapa, single_activity
 from .views import actualizar_progreso, obtener_progreso
 from .views import generar_actividad_desafio
 from .views import register_user
-from .views import guardar_respuesta_desafio, obtener_mejor_puntaje, guardar_informacion_desafio
+from .views import guardar_respuesta_desafio, obtener_mejor_puntaje, guardar_informacion_desafio, revisar_respuesta_redactada
 
 urlpatterns = [
     path('registrar/', register_user),
@@ -18,5 +18,6 @@ urlpatterns = [
     #GUARDAR PREGUNTYAS GENERADAS Y RESPEUSTA DE JUGADOR
     path('guardar-respuesta-desafio/', guardar_respuesta_desafio),
     path('mejor-puntaje/', obtener_mejor_puntaje),
-    path('guardar-informacion-desafio/', guardar_informacion_desafio)
+    path('guardar-informacion-desafio/', guardar_informacion_desafio),
+    path('revisar_respuesta/',revisar_respuesta_redactada)
 ]

@@ -6,7 +6,7 @@
       "fields": {
         "etapa": 1,
         "orden_salida": 1,
-        "contenido": "Bienvenido a la redacción más seria de noticias no tan serias!",
+        "contenido": "Bienvenido a la redacción más seria de noticias no tan serias! 📰😄",
         "antes_actividad": false
       }
     },
@@ -17,7 +17,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 2,
-          "contenido": "Soy Aquiles, pero no te preocupes, aquí el único talón débil es el pensamiento crítico.",
+          "contenido": "Soy Aquiles, pero no te preocupes, aquí el único talón débil es el pensamiento crítico.🦶🧠",
           "antes_actividad": false
         }
     },
@@ -28,7 +28,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 3,
-          "contenido": "Hoy te enseñaré el arte noble de la parodia. Porque, escúchame bien: no todo lo falso es malintencionado. A veces es solo... divertidamente ridículo.",
+          "contenido": "Hoy te enseñaré el arte noble de la parodia. Porque, escúchame bien: no todo lo falso es malintencionado. A veces es solo... divertidamente ridículo.😂",
           "antes_actividad": false
         }
     },
@@ -39,7 +39,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 4,
-          "contenido": "¿Has leído alguna vez titulares como “Descubren que las vacas controlan el clima desde 1972”?  ",
+          "contenido": "¿Has leído alguna vez titulares como “Descubren que las vacas controlan el clima desde 1972”?🐄🌦️",
           "antes_actividad": false
         }
     },
@@ -50,7 +50,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 5,
-          "contenido": "Eso es *sátira*, mi pequeño aprendiz de la ironía.",
+          "contenido": "Eso es *sátira*, mi pequeño aprendiz de la ironía.🤓☝️",
           "antes_actividad": false
         }
     },
@@ -72,7 +72,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 7,
-          "contenido": "Aunque claro, si la compartes sin contexto, ¡Zas! Desinformación sin querer.",
+          "contenido": "Aunque claro, si la compartes sin contexto, ¡Zas! Desinformación sin querer. 😬📲",
           "antes_actividad": false
         }
     },
@@ -94,7 +94,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 9,
-          "contenido": "Listo o no, aqui vamoooos",
+          "contenido": "Listo o no, aqui vamoooos🚀😄",
           "antes_actividad": true
         }
     },
@@ -116,7 +116,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 11,
-          "contenido": "Un pato amarillo que contamina como una fábrica… si eso no es exageración, yo soy un noticiero serio.",
+          "contenido": "Un pato amarillo que contamina como una fábrica 🐤💨, si eso no es exageración, yo soy un noticiero serio.",
           "antes_actividad": false
         }
     },
@@ -127,7 +127,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 12,
-          "contenido": "Ahora ojo al dato:",
+          "contenido": "Ahora ojo al dato 👀📌:",
           "antes_actividad": false
         }
     },
@@ -138,7 +138,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 13,
-          "contenido": "La sátira no siempre es tan ridícula. A veces se disfraza bien, con titulares que suenan casi creíbles.",
+          "contenido": "La sátira no siempre es tan ridícula. A veces se disfraza bien, con titulares que suenan casi creíbles. ",
           "antes_actividad": false
         }
     },
@@ -149,10 +149,10 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 14,
-          "contenido": "Cosas que puedes buscar en una noticia para decir que es satira:",
+          "contenido": "Cosas que puedes buscar en una noticia para decir que es satira:\n🎭Lenguaje exagerado o situaciones absurdas.\n😂Burlas a figuras públicas o eventos reales.\n📚Medios con nombres como El Desinforme, La Mentira Ilustrada, o Noticias Que Tal Vez..",
           "antes_actividad": false
         }
-    },
+    },    
 
     {
         "model": "FakeCorp.conversation",
@@ -160,19 +160,19 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 15,
-          "contenido": "Lenguaje exagerado o situaciones absurdas.",
+          "contenido": "Vamos a poner a prueba eso que acabas de aprender.",
           "antes_actividad": false
         }
     },
-
+    
     {
         "model": "FakeCorp.conversation",
         "pk": 16,
         "fields": {
           "etapa": 1,
           "orden_salida": 16,
-          "contenido": "Burlas a figuras públicas o eventos reales.",
-          "antes_actividad": false
+          "contenido": "A ver si puedes detectar la sátira cuando usa corbata y lentes de periodista 🤓👔.",
+          "antes_actividad": true
         }
     },
     
@@ -182,41 +182,37 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 17,
-          "contenido": "Medios con nombres como El Desinforme, La Mentira Ilustrada, o Noticias Que Tal Vez..",
+          "contenido": "¡Muy bien, muy bien! 👏 Ya vas entendiendo cómo se camufla la sátira entre titulares reales.",
           "antes_actividad": false
         }
     },
-    
-
     {
         "model": "FakeCorp.conversation",
         "pk": 18,
         "fields": {
           "etapa": 1,
           "orden_salida": 18,
-          "contenido": "Vamos a poner a prueba eso que acabas de aprender.",
+          "contenido": "No siempre se presenta como una broma evidente… a veces se disfraza de noticia seria, ¡y ahí está la trampa!",
           "antes_actividad": false
         }
     },
-    
     {
         "model": "FakeCorp.conversation",
         "pk": 19,
         "fields": {
           "etapa": 1,
           "orden_salida": 19,
-          "contenido": "A ver si puedes detectar la sátira cuando usa corbata y lentes de periodista.",
-          "antes_actividad": true
+          "contenido": "Lo importante no es acertar siempre, sino aprender a dudar con estilo. 😎❓",
+          "antes_actividad": false
         }
     },
-    
     {
         "model": "FakeCorp.conversation",
         "pk": 20,
         "fields": {
           "etapa": 1,
           "orden_salida": 20,
-          "contenido": "¡Muy bien, muy bien! Ya vas entendiendo cómo se camufla la sátira entre titulares reales.",
+          "contenido": "Y tú ya diste el primer gran paso: identificar la intención detrás del mensaje.",
           "antes_actividad": false
         }
     },
@@ -226,36 +222,6 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 21,
-          "contenido": "No siempre se presenta como una broma evidente… a veces se disfraza de noticia seria, ¡y ahí está la trampa!",
-          "antes_actividad": false
-        }
-    },
-    {
-        "model": "FakeCorp.conversation",
-        "pk": 22,
-        "fields": {
-          "etapa": 1,
-          "orden_salida": 22,
-          "contenido": "Lo importante no es acertar siempre, sino aprender a dudar con estilo.",
-          "antes_actividad": false
-        }
-    },
-    {
-        "model": "FakeCorp.conversation",
-        "pk": 23,
-        "fields": {
-          "etapa": 1,
-          "orden_salida": 23,
-          "contenido": "Y tú ya diste el primer gran paso: identificar la intención detrás del mensaje.",
-          "antes_actividad": false
-        }
-    },
-    {
-        "model": "FakeCorp.conversation",
-        "pk": 24,
-        "fields": {
-          "etapa": 1,
-          "orden_salida": 24,
           "contenido": "Recuerda: la sátira no busca engañar, pero sí puede confundirte si la compartes sin contexto.",
           "antes_actividad": false
         }
@@ -263,11 +229,11 @@
 
         {
         "model": "FakeCorp.conversation",
-        "pk": 25,
+        "pk": 22,
         "fields": {
           "etapa": 1,
-          "orden_salida": 25,
-          "contenido": "Con eso, mi aprendiz de la ironía, ya tienes las herramientas básicas para reconocer una buena parodia.Prepárate… lo que viene ahora es menos gracioso y mucho más engañoso.",
+          "orden_salida": 22,
+          "contenido": "Con eso, mi aprendiz de la ironía 🧙‍♂️, ya tienes las herramientas básicas para reconocer una buena parodia.Prepárate… lo que viene ahora es menos gracioso y mucho más engañoso.😬🕵️‍♀️",
           "antes_actividad": false,
           "final": true
         }
