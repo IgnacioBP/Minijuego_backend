@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view, permission_classes
 from datetime import datetime
 
 from django.contrib.auth.models import User
-from .models import Conversation, Actividad, UserProgress, Etapa,UserAnswer,RegistroDesafio
+from .models import Conversation, Actividad, UserProgress, Etapa,UserAnswer,RegistroDesafio, ComentarioUsuario
 from .serializers import ConversationSerializer, ActividadSerializer,RespuestaDesafioSerializer, RegistroDesafioSerializer
 
 # PARA GENERACION DE PREGUNTAS
@@ -56,14 +56,26 @@ def elementos_por_etapa(request, etapa_id):
     conversaciones = Conversation.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
     activities = Actividad.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
 
+    #comentarios especificos del usuario en la etapa
+    comentarios = ComentarioUsuario.objects.filter(usuario_id= user, etapa_id=etapa_id).order_by('id')
+
     conv_serializer = ConversationSerializer(conversaciones, many=True).data
 
     resultado = []
     actividad_index = 0  
+    comentario_index = 0
 
     for mensaje in conv_serializer:
+        #Si tiene es un dialogo que va antes de un comentario, aññade el comentario si es que esta disponible
+        if mensaje.get('antes_comentario') and comentario_index< len(comentarios):
+            comentario_usuario = comentarios[comentario_index]
+            mensaje['contenido_comentario'] = comentario_usuario.comentario
+            comentario_index+=1
+
+        #Luego se añade el mensaje tenga o no un comentario
         resultado.append(mensaje)
 
+        #Finalmente si el dialogo ya agregado esta antes de una actividad, se añade ademas a la lista la actividad respondida o no
         if mensaje.get('antes_actividad') and actividad_index < len(activities):
             actividad = activities[actividad_index]
             actividad_serializada = ActividadSerializer(actividad).data
@@ -82,25 +94,6 @@ def elementos_por_etapa(request, etapa_id):
             actividad_index += 1
 
     return Response(resultado)
-
-
-
-
-
-#Obtener una sola  actividad para renderizar
-@api_view(['GET'])
-def single_activity(request, etapa_id, activity_id):
-    try:
-        activity = Actividad.objects.get(id=activity_id, etapa_id=etapa_id)
-        serializer = ActividadSerializer(activity)
-        return Response(serializer.data)
-    except Actividad.DoesNotExist:
-        return Response({"error": "Actividad no encontrada"}, status=status.HTTP_404_NOT_FOUND)
-    
-
-
-
-
 
 
 
@@ -152,9 +145,6 @@ def actualizar_progreso(request):
     
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
-
 
 
 
@@ -358,3 +348,25 @@ def guardar_informacion_desafio(request):
         print("error al guardar informacion")
         print(e)
         return Response({"error": str(e)}, status=400)
+
+# Guardar informacion comentario
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def guardar_comentario(request):
+    data = request.data
+    user = request.user
+
+    try:
+        registro = ComentarioUsuario.objects.create(
+            usuario = user,
+            etapa_id = data["etapa_id"],
+            comentario = data["comentario"],
+        )
+
+        return Response({"mensaje": "comentario guardado correctamente"}, status=status.HTTP_201_CREATED)
+
+    except Exception as e:
+        print("error al guardar informacion")
+        print(e)
+        return Response({"error": str(e)}, status=400)
+    

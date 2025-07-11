@@ -43,6 +43,7 @@ class Conversation(models.Model):
     orden_salida = models.IntegerField()
     contenido = models.TextField()
     antes_actividad = models.BooleanField(default=False)
+    antes_comentario = models.BooleanField(default=False)
     final = models.BooleanField(default=False) 
 
     def __str__(self):
@@ -116,3 +117,11 @@ class RegistroDesafio(models.Model):
 
     timestamp = models.DateTimeField(auto_now_add=True)
     
+
+class ComentarioUsuario(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    etapa = models.ForeignKey(Etapa, on_delete=models.CASCADE)
+    comentario = models.TextField()
+
+
+

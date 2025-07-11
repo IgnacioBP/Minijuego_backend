@@ -84,7 +84,8 @@
           "etapa": 1,
           "orden_salida": 8,
           "contenido": "¿Preparado/a para tu primer desafío?",
-          "antes_actividad": false
+          "antes_actividad": false,
+          "antes_comentario": true
         }
     },
 
@@ -160,8 +161,9 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 15,
-          "contenido": "Vamos a poner a prueba eso que acabas de aprender.",
-          "antes_actividad": false
+          "contenido":  "Vamos a poner a prueba eso que acabas de aprender.\nPero antes dime... ¿te sientes listo/a para detectar sátira real? 🎯",
+          "antes_actividad": false,
+          "antes_comentario": true
         }
     },
     
@@ -171,7 +173,7 @@
         "fields": {
           "etapa": 1,
           "orden_salida": 16,
-          "contenido": "A ver si puedes detectar la sátira cuando usa corbata y lentes de periodista 🤓👔.",
+          "contenido": "Jajaja, me gusta tu energía. Sea un 'sí', un 'no' o un 'depende', igual te va a tocar. Así que vamos con todo 🤓💥",
           "antes_actividad": true
         }
     },
@@ -287,7 +289,5 @@
         "comentario_incorrecto": "¡Ajá! Te atrapó una parodia con pinta de noticia seria. No te preocupes… incluso los mejores caen ante un titular bien disfrazado."
       }
     }
-
-
 
 ]

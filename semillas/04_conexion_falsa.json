@@ -105,6 +105,17 @@
     "fields": {
       "etapa": 2,
       "orden_salida": 11,
+      "contenido": "¿Te ha pasado alguna vez? Esa sensación de ‘me engañaron con el titular’...",
+      "antes_actividad": false,
+      "antes_comentario": true
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 37,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 12,
       "contenido": "A ver si puedes detectar una… ¡Prepárate!",
       "antes_actividad": true
     }
@@ -117,24 +128,13 @@
 
 
 
-  
-  {
-    "model": "FakeCorp.conversation",
-    "pk": 37,
-    "fields": {
-      "etapa": 2,
-      "orden_salida": 12,
-      "contenido": "¡Bien, bien! Estás afinando ese radar.",
-      "antes_actividad": false
-    }
-  },
   {
     "model": "FakeCorp.conversation",
     "pk": 38,
     "fields": {
       "etapa": 2,
       "orden_salida": 13,
-      "contenido": "Recuerda: el titular no siempre te dice la verdad. Te seduce… pero te miente.",
+      "contenido": "¡Bien, bien! Estás afinando ese radar.",
       "antes_actividad": false
     }
   },
@@ -144,23 +144,19 @@
     "fields": {
       "etapa": 2,
       "orden_salida": 14,
-      "contenido": "Ahora, te propongo algo más difícil. Vamos a completar una frase con el ejemplo perfecto de conexión falsa.",
-      "antes_actividad": true
+      "contenido": "Recuerda: el titular no siempre te dice la verdad. Te seduce… pero te miente.",
+      "antes_actividad": false
     }
   },
-  
-  
-  
-
-
   {
     "model": "FakeCorp.conversation",
     "pk": 40,
     "fields": {
       "etapa": 2,
       "orden_salida": 15,
-      "contenido": "¡Excelente trabajo! Ya puedes detectar un titular tramposo a kilómetros.",
-      "antes_actividad": false
+      "contenido": "Ahora dime, ¿qué suena más a trampa: 'Alimento milagroso que cambia tu vida' o 'Informe técnico sobre hábitos alimenticios'? 😏",
+      "antes_actividad": false,
+      "antes_comentario": true
     }
   },
   {
@@ -169,16 +165,46 @@
     "fields": {
       "etapa": 2,
       "orden_salida": 16,
-      "contenido": "Repite conmigo: “No me dejo engañar por títulos con trampa”.",
-      "antes_actividad": false
+      "contenido": "Ahora, te propongo algo más difícil. Vamos a completar una frase con el ejemplo perfecto de conexión falsa.",
+      "antes_actividad": true
     }
   },
+
+
+
+
+
+
+
+
+
+
   {
     "model": "FakeCorp.conversation",
     "pk": 42,
     "fields": {
       "etapa": 2,
       "orden_salida": 17,
+      "contenido": "¡Excelente trabajo! Ya puedes detectar un titular tramposo a kilómetros.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 43,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 18,
+      "contenido": "Repite conmigo: “No me dejo engañar por títulos con trampa”.",
+      "antes_actividad": false
+    }
+  },
+  {
+    "model": "FakeCorp.conversation",
+    "pk": 44,
+    "fields": {
+      "etapa": 2,
+      "orden_salida": 19,
       "contenido": "Nos veremos pronto con otro tipo de desinformación. Pero recuerda… ¡los clics fáciles no siempre traen verdades!",
       "antes_actividad": false,
       "final": true
@@ -232,7 +258,5 @@
         "comentario_incorrecto": "No es tan fácil, ¿eh? Fijate cómo palabras como 'secreto' y 'juventud eterna' hacen que la frase suene exagerada y atractiva, aunque probablemente el artículo real no diga nada tan impactante. Así operan muchas conexiones falsas."
       }
     }
-
-
 
 ]
