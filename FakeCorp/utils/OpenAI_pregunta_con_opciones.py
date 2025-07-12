@@ -99,7 +99,7 @@ def generate_prompt(tipo_pregunta, tipo_desinformacion):
         instrucciones = especificaiones_completar
         estructura_json = """
     {
-        "pregunta": "Completa esta oración: 'El contenido ___ se caracteriza por...'",
+        "pregunta": "Completa esta oración: 'El contenido [___] se caracteriza por...'",
         "opciones": [
             "palabra1",
             "palabra2",
