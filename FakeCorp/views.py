@@ -201,6 +201,7 @@ def generar_actividad_desafio(request):
             contenido = generate_news_for_title(question_category,question_level)
             print(contenido)
             intentos += 1
+
             if isinstance(contenido, str):
                 data = {"contenido" : contenido} 
                 formated = True
@@ -208,8 +209,22 @@ def generar_actividad_desafio(request):
          while not formated and intentos < max_intentos:
             data = obtener_actividad(question_category, question_level,question_type)
             result = check_json(data)
+            intentos += 1
+
             if result == True:
                 formated = True
+                if data.get("idea_imagen") is True:
+                    prompt_img = data.get("prompt_busqueda_imagen", "")
+                    if prompt_img:
+                        url_imagen = obtener_primera_imagen(prompt_img)
+                        if url_imagen:
+                            data["url_imagen"] = url_imagen
+                        else:
+                            data["url_imagen"] = None
+                    else:
+                        data["url_imagen"] = None
+                else:
+                    data["url_imagen"] = None
    
     print("ENVIANDO: ")
     print(data)
@@ -272,7 +287,7 @@ def guardar_respuesta_desafio(request):
 
     # Actualizar dificultad de ser necesario
     check_dificulty(id_etapa=tema_num, usuario=user, dificultad=data["dificultad"], acierto=data["es_correcta"])
-
+    print(f"LO QUE SE GUARDARA ES ESTO => {data}")
     serializer = RespuestaDesafioSerializer(data=data)
     if serializer.is_valid():
         serializer.save()

@@ -4,6 +4,7 @@ import os
 import json
 from typing import Dict, List, Any
 import random
+from serpapi import GoogleSearch
 
 load_dotenv()
 
@@ -136,6 +137,18 @@ EJEMPLOS DE PLATAFORMAS/CONTEXTOS PARA USAR:
 - Capturas de pantalla, videos, audios
 - Grupos de WhatsApp, historias de Instagram
 
+Añade dos campos extra al JSON:
+- "idea_imagen": true o false según si la pregunta sugiere claramente una imagen (como un meme, una foto o una ilustración).
+- "prompt_busqueda_imagen": una frase breve útil para buscar una imagen en Google o una API.
+
+Ejemplo de pregunta que sugiere imagen: "Imagina un meme de una abuela compartiendo noticias en WhatsApp..."
+Ejemplo de 'prompt_busqueda_imagen': "Abuela compartiendo noticias en WhatsApp"
+
+CONSIDERACIONES:
+- El prompt para generar imagen nunca y bajo ningun caso debe contener la palabra "video" o "Tiktok".
+- Si se quiere buscar un cargo especifico sustitur con "una persona"(ejemplo: Si la pregunta es imaginate un leon abrazando a un politico.. , porponer buscar un leon abrazando a una persona)
+- La imagen no puede revelar la respuesta.
+
 """
     
     return prompt_base.strip()
@@ -205,7 +218,7 @@ def check_json(actividad):
         print(f"Error en la actividad: {actividad['error']}")
         return False
     
-    campos_requeridos = ["pregunta", "opciones", "respuesta_correcta", "feedback_acierto", "feedback_fallo"]
+    campos_requeridos = ["pregunta", "opciones", "respuesta_correcta", "feedback_acierto", "feedback_fallo", "idea_imagen" , "prompt_busqueda_imagen"]
     campos_faltantes = []
 
     #Caso campos faltantes
@@ -224,3 +237,25 @@ def check_json(actividad):
 
 
 
+def obtener_primera_imagen(prompt_busqueda):
+    SERP_API_KEY = os.environ.get("SERP_API")
+    params = {
+        "q": prompt_busqueda,
+        "engine": "google_images",
+        "ijn": "0",
+        "num": "1",
+        "safe": "active",
+        "api_key": SERP_API_KEY
+        
+    }
+
+    search = GoogleSearch(params)
+    results = search.get_dict()
+
+    try:
+        primera_imagen = results["images_results"][0]
+        
+        return primera_imagen["thumbnail"]
+    except Exception as e:
+        print(f"Error: {e}")
+        return None

@@ -87,6 +87,7 @@ class RespuestaDesafio(models.Model):
     respuesta_correcta = models.JSONField(null=True)
     respuesta_jugador = models.JSONField()
     es_correcta = models.BooleanField()
+    image = models.TextField(default= None, null=True)
     
     timestamp = models.DateTimeField(auto_now_add=True)
 
