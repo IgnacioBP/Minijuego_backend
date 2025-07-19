@@ -6,8 +6,10 @@ from rest_framework.decorators import api_view, permission_classes
 from datetime import datetime
 
 from django.contrib.auth.models import User
-from .models import Conversation, Actividad, UserProgress, Etapa,UserAnswer,RegistroDesafio, ComentarioUsuario
-from .serializers import ConversationSerializer, ActividadSerializer,RespuestaDesafioSerializer, RegistroDesafioSerializer
+
+from .models import Conversation, Activity, UserProgress, Stage,UserAnswer,ChallengeRecord, UserComment
+
+from .serializers import ConversationSerializer, ActivitySerializer,ChallengeAnswerSerializer, ChallengeRecordSerializer
 
 # PARA GENERACION DE PREGUNTAS
 #from .utils.request_openai import  *
@@ -20,7 +22,7 @@ from .utils.stablish_dificulty import  *
 
 #Crear usuario
 @api_view(['POST'])
-def register_user(request):
+def register_user(request): #MODIFICACION COMPLETA
     username = request.data.get("username")
     password = request.data.get("password")
 
@@ -33,13 +35,13 @@ def register_user(request):
     user = User.objects.create_user(username=username, password=password)
 
 
-    etapas = Etapa.objects.all()
-    for etapa in etapas:
+    stages = Stage.objects.all()
+    for stage in stages:
         UserProgress.objects.create(
-            usuario=user,
-            etapa=etapa,
-            numero_conversacion_alcanzada=0,
-            numero_actividad_alcanzada=0
+            user = user,
+            stage = stage,
+            chat_number_reached = 0,
+            activity_number_reached = 0
         )
         
 
@@ -50,14 +52,14 @@ def register_user(request):
 #Obtener conversaciones y actividades del chat
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])  
-def elementos_por_etapa(request, etapa_id):
+def elements_per_stage(request, etapa_id):
     user = request.user
     print(f"user: {user}")
-    conversaciones = Conversation.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
-    activities = Actividad.objects.filter(etapa_id=etapa_id).order_by('orden_salida')
+    conversaciones = Conversation.objects.filter(stage_id=etapa_id).order_by('output_order')
+    activities = Activity.objects.filter(stage_id=etapa_id).order_by('output_order')
 
     #comentarios especificos del usuario en la etapa
-    comentarios = ComentarioUsuario.objects.filter(usuario_id= user, etapa_id=etapa_id).order_by('id')
+    comentarios = UserComment.objects.filter(user_id= user, stage_id=etapa_id).order_by('id')
 
     conv_serializer = ConversationSerializer(conversaciones, many=True).data
 
@@ -67,25 +69,25 @@ def elementos_por_etapa(request, etapa_id):
 
     for mensaje in conv_serializer:
         #Si tiene es un dialogo que va antes de un comentario, aññade el comentario si es que esta disponible
-        if mensaje.get('antes_comentario') and comentario_index< len(comentarios):
+        if mensaje.get('before_comment') and comentario_index< len(comentarios):
             comentario_usuario = comentarios[comentario_index]
-            mensaje['contenido_comentario'] = comentario_usuario.comentario
+            mensaje['contenido_comentario'] = comentario_usuario.comment
             comentario_index+=1
 
         #Luego se añade el mensaje tenga o no un comentario
         resultado.append(mensaje)
 
         #Finalmente si el dialogo ya agregado esta antes de una actividad, se añade ademas a la lista la actividad respondida o no
-        if mensaje.get('antes_actividad') and actividad_index < len(activities):
+        if mensaje.get('before_activity') and actividad_index < len(activities):
             actividad = activities[actividad_index]
-            actividad_serializada = ActividadSerializer(actividad).data
+            actividad_serializada = ActivitySerializer(actividad).data
 
             # Obtener respuesta del usuario si existe
-            respuesta_usuario = UserAnswer.objects.filter(usuario=user, actividad=actividad).first()
+            respuesta_usuario = UserAnswer.objects.filter(user=user, activity=actividad).first()
             if respuesta_usuario:
                 actividad_serializada['respuesta_usuario'] = {
-                    "seleccion": respuesta_usuario.respuesta,
-                    "es_correcta": respuesta_usuario.buena
+                    "seleccion": respuesta_usuario.answer,
+                    "es_correcta": respuesta_usuario.correct
                 }
             else:
                 actividad_serializada['respuesta_usuario'] = None
@@ -101,12 +103,12 @@ def elementos_por_etapa(request, etapa_id):
 #Actualizar informacion de progreso
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def actualizar_progreso(request):
+def update_progress(request):
     user = request.user
     etapa_id = request.data.get('etapa_id')
     ultimo_chat = request.data['numero_conversacion_alcanzada']
     ultima_actividad_orden_salida = request.data['numero_actividad_alcanzada']
-    compeltada = request.data['final_alcanzado']
+    completada = request.data['final_alcanzado']
     respuesta_usuario = request.data.get('respuesta')
 
     print(request.data)
@@ -118,27 +120,27 @@ def actualizar_progreso(request):
     print(f"Respuesta recibida: {respuesta_usuario} y el tipo de dato recibido es {type(respuesta_usuario) }")
 
     try:
-        #ACtualizacion de informacion de progreso
-        progreso = UserProgress.objects.get(usuario=user, etapa_id=etapa_id)
-        progreso.numero_conversacion_alcanzada = ultimo_chat
-        progreso.numero_actividad_alcanzada = ultima_actividad_orden_salida
-        progreso.completado = compeltada
+        #Actualizacion de informacion de progreso
+        progreso = UserProgress.objects.get(user=user, stage_id=etapa_id)
+        progreso.chat_number_reached = ultimo_chat
+        progreso.activity_number_reached = ultima_actividad_orden_salida
+        progreso.completed = completada
         progreso.save()
 
 
         #Guardar respuesta
         if respuesta_usuario:
             print("Hay respuesta de usaurio")
-            actividad_obj = Actividad.objects.get(orden_salida=ultima_actividad_orden_salida, etapa_id=etapa_id)
-            ya_respondida = UserAnswer.objects.filter(usuario=user, actividad_id=actividad_obj).exists()
+            actividad_obj = Activity.objects.get(output_order=ultima_actividad_orden_salida, stage_id=etapa_id)
+            ya_respondida = UserAnswer.objects.filter(user=user, activity=actividad_obj).exists()
 
             if not ya_respondida:
                 print("NO HA SIDO RESPONDIDA")
                 UserAnswer.objects.create(
-                    usuario = user,
-                    actividad = actividad_obj,
-                    respuesta = respuesta_usuario["opcion_selecionada"],
-                    buena = respuesta_usuario["acierto"]
+                    user = user,
+                    activity = actividad_obj,
+                    answer = respuesta_usuario["opcion_selecionada"],
+                    correct = respuesta_usuario["acierto"]
                 )
         
         return Response({'mensaje': 'Progreso actualizado correctamente'})
@@ -153,18 +155,18 @@ def actualizar_progreso(request):
 
 #Obtener progreso de jugador
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def obtener_progreso(request):
+@permission_classes([IsAuthenticated]) 
+def obtain_progress(request): #MODIFICACION COMPLETA
     user = request.user
-    progresos = UserProgress.objects.filter(usuario=user)
+    all_progress = UserProgress.objects.filter(user=user)
     data = {}
 
-    for progreso in progresos:
-        data[f"etapa_{progreso.etapa.id}"] = {
-            "ultimo_chat_mostrado": progreso.numero_conversacion_alcanzada,
-            "ultima_actividad_completada": progreso.numero_actividad_alcanzada,
-            "final_alcanzado": progreso.completado,
-            "dificultad" : progreso.dificultad_maxima_alcanzada
+    for progress in all_progress:
+        data[f"etapa_{progress.stage.id}"] = {
+            "ultimo_chat_mostrado": progress.chat_number_reached,
+            "ultima_actividad_completada": progress.activity_number_reached,
+            "final_alcanzado": progress.completed,
+            "dificultad" : progress.max_difficulty_reached
         }
 
     return Response(data)
@@ -172,14 +174,10 @@ def obtener_progreso(request):
 
 
 
-
-
-
-
 # ================================== Generacion con OpenIA ==================================
 
 @api_view(['POST'])
-def generar_actividad_desafio(request):
+def generate_challenge_activity(request): #MODIFICACION COMPLETA
     print("Solicitud recibida para generar pregunta en desafío")
 
     question_category = request.data.get('category')
@@ -231,7 +229,7 @@ def generar_actividad_desafio(request):
     return Response(data)
 
 @api_view(['POST'])
-def revisar_respuesta_redactada(request):
+def review_written_response(request): #MODIFICACION COMPLETA
     noticia = request.data.get('noticia')
     user_answer = request.data.get('respuesta')
     tema_noticia = request.data.get('tema')
@@ -260,8 +258,8 @@ def revisar_respuesta_redactada(request):
 
 # GUARDAR PREGUNTAS Y RESPEUSTA DE JUGADOR
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def guardar_respuesta_desafio(request):
+@permission_classes([IsAuthenticated])  
+def save_challenge_answer(request): #MODIFICACION COMPLETA
     print("Recibida solicitud para guardar informacion de desafio")
     print(request.data)  # Esto imprime lo que realmente llega
 
@@ -279,16 +277,16 @@ def guardar_respuesta_desafio(request):
     data = request.data.copy()
 
     # Convertir tema numérico a texto
-    tema_num = int(data.get("tema", 0))
-    data["tema"] = tema_map.get(tema_num, "Tema desconocido")
+    tema_num = int(data.get("topic", 0))
+    data["topic"] = tema_map.get(tema_num, "Tema desconocido")
 
     # Añadir el usuario al registro
-    data["usuario"] = user.id
+    data["user"] = user.id
 
     # Actualizar dificultad de ser necesario
-    check_dificulty(id_etapa=tema_num, usuario=user, dificultad=data["dificultad"], acierto=data["es_correcta"])
+    check_dificulty(id_etapa=tema_num, usuario=user, dificultad=data["difficulty"], acierto=data["is_correct"])
     print(f"LO QUE SE GUARDARA ES ESTO => {data}")
-    serializer = RespuestaDesafioSerializer(data=data)
+    serializer = ChallengeAnswerSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
         return Response({"mensaje": "Respuesta guardada exitosamente"}, status=status.HTTP_201_CREATED)
@@ -299,21 +297,21 @@ def guardar_respuesta_desafio(request):
 #Obtener datos de mejor desafio
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def obtener_mejor_puntaje(request):
+def get_best_score(request): #MODIFICACION COMPLETA
     print(request)
     usuario = request.user
-    mejor = RegistroDesafio.objects.filter(usuario=usuario).order_by('-puntaje_obtenido', 'tiempo_total').first()
+    mejor = ChallengeRecord.objects.filter(user=usuario).order_by('-total_score', 'total_duration').first()
     if mejor:
-        serializer = RegistroDesafioSerializer(mejor)
+        serializer = ChallengeRecordSerializer(mejor)
         return Response(serializer.data)
     
-    print("default")
+    
     return Response({
-        "puntaje_obtenido": 0,
-        "tiempo_total": None,
-        "puntaje_preguntas": 0,
-        "puntaje_tiempo": 0,
-        "puntaje_maximo": 0,
+        "total_score": 0,
+        "total_duration": None,
+        "question_score": 0,
+        "max_score": 0,
+        "bonus_score": 0,
         "timestamp": None,
     })
 
@@ -321,7 +319,7 @@ def obtener_mejor_puntaje(request):
 # Guardar informacion general de desafio
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def guardar_informacion_desafio(request):
+def save_challenge_information(request):    #MODIFICACION COMPLETA
     data = request.data
     
     # Usuario que hizo el desafio
@@ -329,32 +327,32 @@ def guardar_informacion_desafio(request):
 
     try:
         # Puntaje
-        puntaje_obtenido = data["puntaje_obtenido"]
+        total_score = data["total_score"]
         
-        puntaje_preguntas = data["puntaje_preguntas"]
-        puntaje_bono_tiempo = data["puntaje_tiempo"]
-        puntaje_maximo_preguntas = data["puntaje_maximo"]
+        question_score = data["question_score"]
+        bonus_score = data["bonus_score"]
+        max_score = data["max_score"]
         
         # Tiempos
-        tiempo_inicio = datetime.fromisoformat(data["hora_inicio"])
-        tiempo_termino = datetime.fromisoformat(data["hora_termino"])
-        duracion_total =  tiempo_termino-tiempo_inicio
+        start_time = datetime.fromisoformat(data["start_time"])
+        end_time = datetime.fromisoformat(data["end_time"])
+        total_duration =  end_time-start_time
 
         #Dificultades
-        dif_iniciales = data["dificultades_iniciales"]
-        dif_finales = data["dificultades_finales"]
+        initial_difficulties = data["initial_difficulties"]
+        final_difficulties = data["final_difficulties"]
 
-        registro = RegistroDesafio.objects.create(
-                    usuario=user,
-                    puntaje_obtenido=puntaje_obtenido,
-                    puntaje_preguntas=puntaje_preguntas,
-                    puntaje_tiempo=puntaje_bono_tiempo,
-                    puntaje_maximo=puntaje_maximo_preguntas,
-                    hora_inicio=tiempo_inicio,
-                    hora_termino=tiempo_termino,
-                    tiempo_total=duracion_total,
-                    dificultades_iniciales=dif_iniciales,
-                    dificultades_finales=dif_finales
+        registro = ChallengeRecord.objects.create(
+                    user = user,
+                    total_score = total_score,
+                    question_score = question_score,
+                    bonus_score = bonus_score,
+                    max_score = max_score,
+                    start_time = start_time,
+                    end_time = end_time,
+                    total_duration = total_duration,
+                    initial_difficulties = initial_difficulties,
+                    final_difficulties = final_difficulties
                 )
     
         return Response({"mensaje": "Desafío guardado correctamente"}, status=status.HTTP_201_CREATED)
@@ -367,15 +365,15 @@ def guardar_informacion_desafio(request):
 # Guardar informacion comentario
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def guardar_comentario(request):
+def save_comment(request):
     data = request.data
     user = request.user
 
     try:
-        registro = ComentarioUsuario.objects.create(
-            usuario = user,
-            etapa_id = data["etapa_id"],
-            comentario = data["comentario"],
+        registro = UserComment.objects.create(
+            user = user,
+            stage_id = data["etapa_id"],
+            comment = data["comentario"],
         )
 
         return Response({"mensaje": "comentario guardado correctamente"}, status=status.HTTP_201_CREATED)

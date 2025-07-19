@@ -3,49 +3,49 @@
       "model": "FakeCorp.etapa",
       "pk": 1,
       "fields": {
-        "habilidad": "Parodia"
+        "desinformation_name": "Parodia"
       }
     },
     {
       "model": "FakeCorp.etapa",
       "pk": 2,
       "fields": {
-        "habilidad": "Conexión falsa"
+        "desinformation_name": "Conexión falsa"
       }
     },
     {
       "model": "FakeCorp.etapa",
       "pk": 3,
       "fields": {
-        "habilidad": "Contenido engañoso"
+        "desinformation_name": "Contenido engañoso"
       }
     },
     {
       "model": "FakeCorp.etapa",
       "pk": 4,
       "fields": {
-        "habilidad": "Contexto falso"
+        "desinformation_name": "Contexto falso"
       }
     },
     {
       "model": "FakeCorp.etapa",
       "pk": 5,
       "fields": {
-        "habilidad": "Contenido impostor"
+        "desinformation_name": "Contenido impostor"
       }
     },
     {
       "model": "FakeCorp.etapa",
       "pk": 6,
       "fields": {
-        "habilidad": "Contenido Manipulado"
+        "desinformation_name": "Contenido Manipulado"
       }
     },
     {
       "model": "FakeCorp.etapa",
       "pk": 7,
       "fields": {
-        "habilidad": "Contenido fabricado"
+        "desinformation_name": "Contenido fabricado"
       }
     }
 ]

@@ -1,23 +1,25 @@
 from django.urls import path
-from .views import elementos_por_etapa
-from .views import actualizar_progreso, obtener_progreso
-from .views import generar_actividad_desafio
-from .views import register_user
-from .views import guardar_respuesta_desafio, obtener_mejor_puntaje, guardar_informacion_desafio, revisar_respuesta_redactada, guardar_comentario
+from .views import elements_per_stage, update_progress, obtain_progress
+from .views import generate_challenge_activity, register_user
+from .views import save_challenge_answer, get_best_score, save_challenge_information
+from .views import review_written_response, save_comment
+
+
+
+
 
 urlpatterns = [
     path('registrar/', register_user),
 
 
-    path('etapas/<int:etapa_id>/conversaciones/', elementos_por_etapa),
-    path('actualizar-progreso/', actualizar_progreso),
-    path('obtener-progreso/', obtener_progreso),
-    path('generar-pregunta/', generar_actividad_desafio),
+    path('etapas/<int:etapa_id>/conversaciones/', elements_per_stage),
+    path('actualizar-progreso/', update_progress),
+    path('obtener-progreso/', obtain_progress), #OK
+    path('guardar-comentario/',save_comment),
 
-    #GUARDAR PREGUNTYAS GENERADAS Y RESPEUSTA DE JUGADOR
-    path('guardar-respuesta-desafio/', guardar_respuesta_desafio),
-    path('mejor-puntaje/', obtener_mejor_puntaje),
-    path('guardar-informacion-desafio/', guardar_informacion_desafio),
-    path('revisar_respuesta/',revisar_respuesta_redactada),
-    path('guardar-comentario/',guardar_comentario)
+    path('generar-pregunta/', generate_challenge_activity), #OK
+    path('guardar-respuesta-desafio/', save_challenge_answer), #OK
+    path('mejor-puntaje/', get_best_score), #OK
+    path('guardar-informacion-desafio/', save_challenge_information), #OK
+    path('revisar_respuesta/',review_written_response), #OK
 ]

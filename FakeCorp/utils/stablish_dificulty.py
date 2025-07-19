@@ -21,8 +21,8 @@ def check_dificulty (id_etapa,usuario,dificultad,acierto):
 
     if nueva_dificultad != dificultad:
         try:
-            progreso = UserProgress.objects.get(usuario=usuario, etapa_id=id_etapa)
-            progreso.dificultad_maxima_alcanzada = nueva_dificultad
+            progreso = UserProgress.objects.get(user=usuario, stage_id=id_etapa)
+            progreso.max_difficulty_reached = nueva_dificultad
             progreso.save()
             print(f"Dificultad actualizada a: {nueva_dificultad}")
         except UserProgress.DoesNotExist:

@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Conversation, Actividad, UserProgress, RespuestaDesafio
-from .models import RegistroDesafio
+from .models import Conversation, Activity, UserProgress, ChallengeAnswer
+from .models import ChallengeRecord
 
 #Para cargar conversaciones
 class ConversationSerializer(serializers.ModelSerializer):
@@ -14,11 +14,11 @@ class ConversationSerializer(serializers.ModelSerializer):
         return 'mensaje'
 
 #Para cargar actividades
-class ActividadSerializer(serializers.ModelSerializer):
+class ActivitySerializer(serializers.ModelSerializer):
     tipo_general = serializers.SerializerMethodField("get_tipo")
 
     class Meta:
-        model = Actividad
+        model = Activity
         fields = '__all__'
 
     def get_tipo(self, obj):
@@ -32,13 +32,13 @@ class ProgressSerializer(serializers.ModelSerializer):
 
 
 #Para guardar informacion de las preguntas generadas t respondidas
-class RespuestaDesafioSerializer(serializers.ModelSerializer):
+class ChallengeAnswerSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RespuestaDesafio
+        model = ChallengeAnswer
         fields = '__all__'
 
 #Para guardar informacion  general del desafio
-class RegistroDesafioSerializer(serializers.ModelSerializer):
+class ChallengeRecordSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RegistroDesafio
+        model = ChallengeRecord
         fields = '__all__'
